@@ -294,25 +294,55 @@ def dot_icon(color, size=16, ring=None):
 BRAND = "#0a84ff"         # the app icon stays PhoneCast blue whatever the accent
 
 
+def paint_logo(p, rect, small=False):
+    """The PhoneCast mark (docs/logo.svg): a phone outline casting out to the side, on a blue tile.
+
+    Drawn on a 512-unit grid scaled into rect. Small sizes drop the outer arc, which would blur.
+    """
+    from PySide6.QtGui import QPen
+    s = rect.width() / 512.0
+    p.save()
+    p.translate(rect.x(), rect.y())
+    p.scale(s, s)
+    tile = QPainterPath()
+    tile.addRoundedRect(QRectF(0, 0, 512, 512), 116, 116)
+    grad = QLinearGradient(0, 0, 0, 512)
+    grad.setColorAt(0.0, QColor("#3a9dff"))
+    grad.setColorAt(1.0, QColor("#0866d6"))
+    p.fillPath(tile, grad)
+    width = 34 if small else 28
+    pen = QPen(QColor("#ffffff"), width)
+    pen.setCapStyle(Qt.RoundCap)
+    p.setPen(pen)
+    p.setBrush(Qt.NoBrush)
+    p.drawRoundedRect(QRectF(112, 100, 172, 312), 38, 38)
+    p.setPen(Qt.NoPen)
+    p.setBrush(QColor("#ffffff"))
+    if not small:
+        p.drawRoundedRect(QRectF(172, 138, 52, 14), 7, 7)
+    p.setPen(pen)
+    p.setBrush(Qt.NoBrush)
+    # arcs centred on the phone's right edge; Qt angles are in 1/16 degree, counter-clockwise from 3 o'clock
+    p.drawArc(QRectF(277 - 62, 256 - 62, 124, 124), -54 * 16, 108 * 16)
+    if not small:
+        c = QColor("#ffffff")
+        c.setAlphaF(0.75)
+        pen.setColor(c)
+        p.setPen(pen)
+        p.drawArc(QRectF(273 - 128, 256 - 128, 256, 256), -54 * 16, 108 * 16)
+    p.restore()
+
+
 def app_icon():
-    """Window/taskbar icon: a TV glyph on a softly lit, rounded (squircle-like) tile."""
+    """Window/taskbar icon: the PhoneCast mark at every size Windows asks for."""
     icon = QIcon()
     for size in (16, 24, 32, 48, 64, 128, 256):
         pm = QPixmap(size, size)
         pm.fill(Qt.transparent)
         p = QPainter(pm)
         p.setRenderHint(QPainter.Antialiasing)
-        inset = 0 if size <= 24 else size * 0.04
-        rect = QRectF(inset, inset, size - 2 * inset, size - 2 * inset)
-        path = QPainterPath()
-        path.addRoundedRect(rect, rect.width() * 0.26, rect.width() * 0.26)
-        grad = QLinearGradient(rect.topLeft(), rect.bottomLeft())
-        grad.setColorAt(0.0, QColor(_mix(BRAND, "#ffffff", 0.16)))
-        grad.setColorAt(1.0, QColor(_mix(BRAND, "#000000", 0.12)))
-        p.fillPath(path, grad)
-        p.setPen(QColor("#ffffff"))
-        p.setFont(icon_font(int(rect.width() * 0.56)))
-        p.drawText(rect.toRect(), Qt.AlignCenter, G["tv"])
+        inset = 0 if size <= 32 else size * 0.04
+        paint_logo(p, QRectF(inset, inset, size - 2 * inset, size - 2 * inset), small=size <= 24)
         p.end()
         icon.addPixmap(pm)
     return icon

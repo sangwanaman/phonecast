@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/logo.svg" width="96" height="96" alt="PhoneCast logo">
+</p>
+
 <h1 align="center">PhoneCast</h1>
 
 <p align="center">
@@ -16,12 +20,12 @@
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="docs/demo.png">
-    <img src="docs/demo.webp" width="400" height="760" alt="PhoneCast mirroring an Android phone: a search typed from the computer's keyboard, a switch to a second phone from the bottom bar, then a screen recording">
+    <img src="docs/demo.webp" width="400" height="760" alt="PhoneCast in use: a chat reply typed on the computer's keyboard on a Galaxy S21 FE, a switch to a Galaxy S24 Ultra from the bottom bar, then text pasted from the computer's clipboard into a note">
   </picture>
 </p>
 
 PhoneCast started as a way to keep using a Samsung Galaxy S21 FE with a broken screen. It works
-with any Android phone that has USB debugging on (also tested on a Xiaomi Redmi Note 4), needs no
+with any Android phone that has USB debugging on (also tested on a second, older phone), needs no
 app on the phone, and connects by itself when you plug the cable in.
 
 ## Features
