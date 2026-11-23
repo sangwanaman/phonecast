@@ -28,6 +28,19 @@ PhoneCast started as a way to keep using a Samsung Galaxy S21 FE with a broken s
 with any Android phone that has USB debugging on (also tested on a second, older phone), needs no
 app on the phone, and connects by itself when you plug the cable in.
 
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center" width="50%"><img src="docs/screenshots/home.webp" width="300" alt="PhoneCast showing a Galaxy M31 home screen, with a second phone connected"><br><sub>Your phone's screen on your PC, ready to use</sub></td>
+    <td align="center" width="50%"><img src="docs/screenshots/protected-screen.png" width="300" alt="PhoneCast drawing an outline of the lock screen's PIN pad, which Android hides from screen capture"><br><sub>Unlock even when Android hides the screen: PhoneCast outlines the PIN pad</sub></td>
+  </tr>
+  <tr>
+    <td align="center" width="50%"><img src="docs/screenshots/settings-app.png" width="300" alt="PhoneCast showing the Samsung Settings app on a Galaxy S21 FE"><br><sub>Every app works, controlled with your mouse and keyboard</sub></td>
+    <td align="center" width="50%"><img src="docs/screenshots/messages.png" width="300" alt="PhoneCast showing an expired one-time code in the Messages app"><br><sub>Read your messages and verification codes on your PC</sub></td>
+  </tr>
+</table>
+
 ## Features
 
 - **Mirror and control**: click to tap, drag to swipe, scroll, type, Ctrl+V to paste. Text copied
@@ -147,6 +160,7 @@ turn on **Disable adb authorization timeout** while you still can.
 | `engine/scrcpy` | Bundled scrcpy 5.0.1 server and adb |
 | `tests/` | Tests: the picture fills the window, the controls stay flat, phone picking |
 | `docs/demo/` | Source of the demo animation above |
+| `docs/screenshots/` | Real screenshots of the app |
 
 ## Tests
 
