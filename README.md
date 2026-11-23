@@ -73,6 +73,12 @@ app on the phone, and connects by itself when you plug the cable in.
 
 ## Install
 
+**Without Git:** download the latest release from the
+[Releases page](https://github.com/sangwanaman/phonecast/releases/latest) (**Source code (zip)**),
+unzip it, then right-click `install.ps1` → **Run with PowerShell**.
+
+**With Git:**
+
 ```powershell
 git clone https://github.com/sangwanaman/phonecast.git
 cd phonecast
